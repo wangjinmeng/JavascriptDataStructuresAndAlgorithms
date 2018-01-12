@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>栈</title>
+</head>
+<body>
+<script>
+    function Stack(){
+        var items = [];
+        this.push = function (ele) {
+            items.push(ele)
+        };
+        this.pop = function () {
+            return items.pop()
+        };
+        this.peek = function () {
+            return items[items.length - 1]
+        };
+        this.isEmpty = function () {
+            return items.length === 0;
+        };
+        this.clear = function () {
+            items = []
+        };
+        this.size = function () {
+            return items.length
+        };
+        this.print = function () {
+            console.log(items.toString())
+        };
+    }
+    //十进制与二进制之间的转化
+    function divideBy2(decNumber){
+        var stack=new Stack();
+        var rem;
+        var binaryString = '';
+        while (decNumber>0){
+            rem=decNumber%2;
+            stack.push(rem);
+            decNumber=Math.floor(decNumber/2);
+        }
+        while (!stack.isEmpty()){
+            binaryString += stack.pop().toString();
+        }
+        return binaryString;
+    }
+    //栈的运用、十进制与其他进制的转化
+    function baseConverter(decNumber,base){
+        var remStack = new Stack();
+        var rem;
+        var binaryString = '';
+        var digits='0123456789ABCDEF'.split('');
+        while(decNumber>0){
+            rem=decNumber%base;
+            remStack.push(rem);
+            decNumber=Math.floor(decNumber/base)
+        }
+        while (!remStack.isEmpty()){
+            binaryString+=digits[remStack.pop()]
+        }
+        return binaryString;
+    }
+</script>
+</body>
+</html>

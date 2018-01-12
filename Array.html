@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 添加和删除元素
+    var numbers=[0,1,2,3,4,5,6,7,8,9];
+    console.log(numbers);
+    // 在数组的尾部添加数组
+    setTimeout(function () {
+        numbers.push(10);
+        console.log(numbers);
+    },50);
+    setTimeout(function () {
+        numbers.push(11,12);
+        console.log(numbers);
+    },50);
+
+    // 在数组的尾部删除元素
+    setTimeout(function () {
+        numbers.pop();
+        console.log(numbers)
+    },50);
+
+    // 在数组的头部添加新元素
+    setTimeout(function () {
+        numbers.unshift(-1);
+        console.log(numbers)
+    },50)
+    // 在数组的头部删除元素
+    setTimeout(function () {
+        numbers.shift();
+        console.log(numbers)
+    },50)
+    // 从数组的中部删除元素
+    setTimeout(function () {
+        numbers.splice(1,2)
+        console.log(numbers)
+    },50)
+    // 从数组的制定位置插入元素
+    setTimeout(function () {
+        numbers.splice(1,0,1,2)
+        console.log(numbers)
+    },50)
+
+    // 三维数组
+    var matrix3x3x3=[]
+    function a() {
+        for(var i=0;i<3;i++){
+            matrix3x3x3[i]=[]
+            for(var j=0;j<3;j++){
+                matrix3x3x3[i][j]=[]
+                for(var k=0;k<3;k++){
+                    matrix3x3x3[i][j][k]=i+j+k
+                }
+            }
+        }
+    };
+    function b() {
+        for(var i=0;i<3;i++){
+            for(var j=0;j<3;j++){
+                for(var k=0;k<3;k++){
+                    console.log(matrix3x3x3[i][j][k])
+                }
+            }
+        }
+    };
+    setTimeout(function () {
+        a()
+        b()
+    },50)
+    // 数组合并
+        console.log('数组合并')
+        var arr1='12345'.split('');
+        var arr2='6789'.split('');
+        var arr3=arr1.concat(arr2);
+        console.log(arr1);
+        console.log(arr2);
+        console.log(arr3);
+    // 迭代器函数
+        console.log('迭代器函数')
+        var arr = [1,2,3,4,5,6,7,8,9];
+        function isEven(num) {
+            console.log(num);
+            return !(num % 2);
+        }
+        console.log(arr.every(isEven));
+        console.log(arr.some(isEven));
+        console.log(arr.map(isEven));
+        console.log(arr.filter(isEven));
+        console.log(arr.forEach(function (value) { console.log(value) }));
+        console.log(arr.reduce(function (previous,current,index) {
+            return previous+current
+        }))
+        console.log(arr)
+
+    // 搜索和排序
+        console.log('搜索和排序')
+        var num=[1,5,7,6,2,3,4,11,12,123]
+        console.log([1,5,7,6,2,3,4,11,12,123].reverse());
+        console.log([1,5,7,6,2,3,4,11,12,123].sort());
+        console.log([1,5,7,6,2,3,4,11,12,123].sort(function(a,b){
+            if(a<b){
+                return -1
+            }else if(a>b){
+                return 1
+            }
+            return 0
+        }));
+    // 输出数组为字符串
+
+    var textArr='hello'.split('');
+    console.log('输出数组为字符串')
+    console.log(textArr.toString())
+    console.log(textArr.join(''))
+</script>
+</body>
+</html>
