@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>优先队列</title>
+</head>
+<body>
+<script>
+    function PriorityQueue() {
+        var items = [];
+        function QueueElement(element,priority) {
+            this.element = element;
+            this.priority = priority;
+        }
+
+        this.deQueue = function (ele) {
+            return items.shift();
+        };
+        // 返回队列的第一项，不做其他操作
+        this.front = function (ele) {
+            return items[0];
+        };
+        // 返回队列是否为空，为空返回true,不为空返回false
+        this.isEmpty = function (ele) {
+            return items.length === 0;
+        };
+        // 返回队列中元素个数
+        this.size = function (ele) {
+            return items.length;
+        };
+        // 清空队列
+        this.clear = function () {
+            items = [];
+        };
+        // 打印
+        this.print=function () {
+            console.log(items)
+        }
+        this.enQueue=function (element,priority) {
+            var queueElement = new QueueElement(element, priority);
+            if (this.isEmpty()) {
+                items.push(queueElement)
+            }else {
+                var added=false;
+                for(var i=0;i<items.length;i++) {
+                    if(priority<items[i].priority){
+                        added = true;
+                        items.splice(i, 0, queueElement);
+                        break;
+                    }
+                }
+                if(!added){
+                    items.push(queueElement)
+                }
+            }
+        };
+    }
+</script>
+</body>
+</html>

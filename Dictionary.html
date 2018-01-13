@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字典</title>
+</head>
+<body>
+<script>
+    function Dictionary() {
+        var items = {};
+        var length = 0;
+        this.set = function (key, value) {
+            items[key] = value;
+            length++;
+        };
+        this.remove = function (key) {
+            if(this.has(key)) {
+                delete items[key];
+                length--;
+                return true;
+            }
+            return false;
+        };
+        this.has = function (key) {
+            return key in items
+        };
+        this.get = function (key) {
+            return this.has(key) ? items[key] : undefined;
+        };
+        this.clear = function () {
+        };
+        this.size = function () {
+            return length;
+        };
+        this.keys = function () {
+            var keysArr = [];
+            for(var key in items) {
+                keysArr.push(key);
+            }
+            return keysArr;
+        };
+        this.values = function () {
+            var values = [];
+            for (var key in items) {
+                if(items.hasOwnProperty(key)) {
+                    values.push(items[key]);
+                }
+            }
+            return values;
+        };
+        this.getItems=function () {
+            return items;
+        }
+    }
+</script>
+</body>
+</html>

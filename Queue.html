@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>队列</title>
+</head>
+<body>
+<script>
+    function Queue() {
+        var items = [];
+        //在队列的尾部添加一个新项
+        this.enQueue = function (ele) {
+            items.push(ele)
+        };
+        // 移除队列的第一项，并返回移除项
+        this.deQueue = function (ele) {
+            return items.shift();
+        };
+        // 返回队列的第一项，不做其他操作
+        this.front = function (ele) {
+            return items[0];
+        };
+        // 返回队列是否为空，为空返回true,不为空返回false
+        this.isEmpty = function (ele) {
+            return items.length === 0;
+        };
+        // 返回队列中元素个数
+        this.size = function (ele) {
+            return items.length;
+        };
+        // 清空队列
+        this.clear = function () {
+            items = [];
+        };
+        // 打印
+        this.print=function () {
+            console.log(items.toString())
+        }
+    }
+    // 击鼓传花
+    function hotPotato(nameList,num) {
+        var queue=new Queue();
+        for (var i=0;i<nameList.length;i++) {
+            queue.enQueue(nameList[i]);
+        }
+        var eliminated = '';
+        while (queue.size()>1) {
+            for (var j=0;j<num;j++) {
+                queue.enQueue(queue.deQueue())
+            }
+            eliminated=queue.deQueue();
+            console.log(eliminated+'在击鼓传花中被淘汰')
+        }
+        return queue.deQueue()
+    }
+</script>
+</body>
+</html>
